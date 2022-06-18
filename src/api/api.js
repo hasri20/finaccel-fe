@@ -7,9 +7,12 @@ const refreshAccessToken = async () => {
   try {
     const refreshToken = Cookies.get("refreshToken");
 
-    const response = await axios.put("http://localhost:5000/authentications", {
-      refreshToken,
-    });
+    const response = await axios.put(
+      "https://finaccel-be.herokuapp.com/authentications",
+      {
+        refreshToken,
+      }
+    );
 
     Cookies.set("accessToken", response.data.data.accessToken);
     return response.data.data.accessToken;
